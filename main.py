@@ -1,4 +1,5 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
+import json
 
 app = FastAPI()
 
@@ -6,6 +7,12 @@ app = FastAPI()
 async def rutadeprueba():
     return "Hola desde FastAPI"
 
-@app.post('/quiero/<num1>/<num2>')
-def mul(num1,num2):
+@app.post("/mul")
+async def calc(request:Request):
+    num1= int(request.form.get('num1'))
+    num2= int(request.form.get('num2'))
     return num1*num2
+    
+
+
+
