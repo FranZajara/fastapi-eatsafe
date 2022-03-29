@@ -7,7 +7,7 @@ app = FastAPI()
 async def rutadeprueba():
     return "Hola desde FastAPI"
 
-@app.post("/mul")
+@app.get("/mul")
 async def calc(request:Request):
     num1= int(request.form.get('num1'))
     num2= int(request.form.get('num2'))
