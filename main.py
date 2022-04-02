@@ -23,4 +23,4 @@ class Respuestas(BaseModel):
 
 @app.post('/posts')
 async def create(respuesta: Respuestas):
-    return respuesta
+    return respuesta.name
