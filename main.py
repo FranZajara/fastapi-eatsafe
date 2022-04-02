@@ -20,11 +20,9 @@ class Respuestas(BaseModel):
     number1: int
     number: int
 
-    class Config:
-        orm_mode = True
 
 @app.post('/posts')
 async def create(respuesta: Respuestas):
-    json_compatible_item_data = jsonable_encoder(respuesta)
-    return Pica(respuesta.number1, respuesta.number)
+    respuestaj = jsonable_encoder(respuesta)
+    return Pica(respuesta[0], respuestaj[1])
 
