@@ -1,6 +1,6 @@
 from fastapi import FastAPI, Request
 import json
-
+from pydantic import BaseModel
 
 app = FastAPI()
 
@@ -16,10 +16,11 @@ async def calc(request:Request):
     
 
 
+
+class Respuestas(BaseModel):
+    name:str
+    number: int
+
 @app.post('/posts')
-def fetch(self,page=1):
-     request = fetch(self.url(page))
-     if self.mode == 'object':
-         return json.load(request)
-     else:
-         return request.read()
+async def create(respuesta: Respuestas):
+    return respuesta
