@@ -1,7 +1,7 @@
 from fastapi import FastAPI, Request
 import json
 from pydantic import BaseModel
-from funciones import *
+#from funciones import *
 
 app = FastAPI()
 
@@ -21,4 +21,4 @@ class Respuestas(BaseModel):
 
 @app.post('/posts')
 async def create(respuesta: Respuestas):
-    return Pica(respuesta.number1, respuesta.number)
+   # return Pica(respuesta.number1, respuesta.number)
