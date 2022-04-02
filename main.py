@@ -14,13 +14,19 @@ async def calc(request:Request):
     num2= int(request.form.get('num2'))
     return num1*num2
     
-
+def Pica(C1, C2):
+    if(((C1 == 1) & (C2 == 1)) | ((C1 == 1) & (C2 == 0))):
+        return True
+    elif((C1 == 0) & (C2 == 1)):
+        return False
+    else:
+        return False
 
 
 class Respuestas(BaseModel):
-    name:str
+    number1: int
     number: int
 
 @app.post('/posts')
 async def create(respuesta: Respuestas):
-    return respuesta.name
+    return Pica(respuesta.number1, respuesta.number)
