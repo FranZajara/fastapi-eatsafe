@@ -25,6 +25,8 @@ class Respuestas(BaseModel):
 
 @app.post('/posts')
 async def create(respuesta: Respuestas):
-    respuestaj = jsonable_encoder(respuesta)
-    return Pica(respuesta[0], respuestaj[1])
+    res_dic = respuesta.dict()
+    return res_dic
+    
+    #return Pica(respuesta[0], respuestaj[1])
 
