@@ -20,6 +20,8 @@ class Respuestas(BaseModel):
     number1: int
     number: int
 
+    class Config:
+        orm_mode = True
 
 @app.post('/posts')
 async def create(respuesta: Respuestas):
