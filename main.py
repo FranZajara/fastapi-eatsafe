@@ -19,6 +19,9 @@ class Respuestas(BaseModel):
     number1: int
     number: int
 
+    class Config:
+        orm_mode = True
+
 @app.post('/posts')
 async def create(respuesta: Respuestas):
     return Pica(respuesta.number1, respuesta.number)
