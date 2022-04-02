@@ -2,6 +2,7 @@ from fastapi import FastAPI, Request
 import json
 from pydantic import BaseModel
 from funciones import *
+from fastapi.encoders import jsonable_encoder
 
 app = FastAPI()
 
@@ -24,4 +25,6 @@ class Respuestas(BaseModel):
 
 @app.post('/posts')
 async def create(respuesta: Respuestas):
+    json_compatible_item_data = jsonable_encoder(respuesta)
     return Pica(respuesta.number1, respuesta.number)
+
