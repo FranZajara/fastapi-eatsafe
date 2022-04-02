@@ -1,7 +1,7 @@
 from fastapi import FastAPI, Request
 import json
 from pydantic import BaseModel
-#from funciones import *
+from funciones import *
 
 app = FastAPI()
 
