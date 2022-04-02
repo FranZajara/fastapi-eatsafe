@@ -19,6 +19,6 @@ class Respuestas(BaseModel):
     number1: int
     number: int
 
-@app.post('/posts')
-async def create(respuesta: Respuestas):
+#@app.post('/posts')
+#async def create(respuesta: Respuestas):
    # return Pica(respuesta.number1, respuesta.number)
