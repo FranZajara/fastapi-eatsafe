@@ -25,8 +25,7 @@ class Respuestas(BaseModel):
 
 @app.post('/posts')
 async def create(respuesta: Respuestas):
-    res_dic = respuesta.dict()
-    return res_dic
+    return respuesta
     
     #return Pica(respuesta[0], respuestaj[1])
 
