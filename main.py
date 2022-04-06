@@ -34,4 +34,4 @@ async def login(username: int = Form(...), password: int = Form(...)):
     a = username
     b = password
     c = a * b
-    return 'El resultado de la multiplicación es: ' + c
+    return c
