@@ -46,7 +46,7 @@ async def analisis(nombre: str = Form(...),
                 cuestion11: int = Form(...),
                 cuestion12: int = Form(...),
                 cuestion13: int = Form(...),
-                cuestion14: int = Form(...),
+                cuestion14: str = Form(...),
                 cuestion15: int = Form(...)):
     
     return cuestion14
