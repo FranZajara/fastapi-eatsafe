@@ -30,5 +30,5 @@ async def create(respuesta: Respuestas):
     #return Pica(respuesta[0], respuestaj[1])
 
 @app.post('/form')
-async def formulario(number1: int == Form(...), number: int == Form(...)):
-    return number * number1
+async def formulario(number1: str == Form(...), number: str == Form(...)):
+    return {'number1': number1 , 'number': number}
