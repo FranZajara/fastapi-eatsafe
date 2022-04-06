@@ -31,4 +31,4 @@ async def create(respuesta: Respuestas):
 
 @app.post("/login/")
 async def login(username: int = Form(...), password: int = Form(...)):
-    return {"username": username}
+    return username
