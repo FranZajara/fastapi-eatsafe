@@ -31,4 +31,7 @@ async def create(respuesta: Respuestas):
 
 @app.post("/login/")
 async def login(username: int = Form(...), password: int = Form(...)):
-    return username
+    a = username
+    b = password
+    c = a * b
+    return 'El resultado de la multiplicación es: ' + c
