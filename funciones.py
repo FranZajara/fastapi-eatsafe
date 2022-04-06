@@ -2,16 +2,14 @@ from sklearn import tree
 import pandas as pd
 import numpy
 
-
+#función para calcular el índice metabólico basal
 def IMB(sexo,altura,peso, edad):
     if(sexo == "Hombre"):
         return 10*peso + 6.25*altura - 5*edad + 5
     else:
         return 10*peso + 6.25*altura - 5*edad -161
 
-
-
-
+#función para identificar si el paciente posee el trastorno alimenticio de Pica
 def Pica(C1, C2):
     if(((C1 == 1) & (C2 == 1)) | ((C1 == 1) & (C2 == 0))):
         return True
@@ -20,7 +18,7 @@ def Pica(C1, C2):
     else:
         return False
 
-
+#función para identificar si el paciente posee el trastorno alimenticio de Rumiación
 def Rumiacion(C3):
     if(C3 == 1):
         return True
@@ -33,7 +31,7 @@ def Evitacion(C4,C5):
     else:
         return False
 
-
+#función para identificar si el paciente posee el trastorno alimenticio de Anorexia Nerviosa
 def Anorexia(C4,C6,C7,C8,C9):
     datos = pd.read_csv('datos_anorexia.csv', sep = ';' , header=0)
     datos = pd.read_csv('datos_anorexia.csv', sep = ';' , header=0)
@@ -50,12 +48,7 @@ def Anorexia(C4,C6,C7,C8,C9):
 
 
 
-
-
-
-
-
-
+#función para identificar si el paciente posee el Síndrome de ingesta nocturna
 
 def Nocturno(C15):
     if (C15 == 1):

@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Request
+from fastapi import FastAPI, Request, Form
 import json
 from pydantic import BaseModel
 from funciones import *
@@ -29,3 +29,6 @@ async def create(respuesta: Respuestas):
     
     #return Pica(respuesta[0], respuestaj[1])
 
+@app.post('/form')
+async def formulario(number1: int == Form(...), number: int == Form(...)):
+    return number * number1
