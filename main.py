@@ -30,5 +30,5 @@ async def create(respuesta: Respuestas):
     #return Pica(respuesta[0], respuestaj[1])
 
 @app.post("/login/")
-async def login(username: str = Form(...), password: str = Form(...)):
+async def login(username: int = Form(...), password: int = Form(...)):
     return {"username": username}
