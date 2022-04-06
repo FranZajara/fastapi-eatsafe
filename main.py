@@ -29,9 +29,28 @@ async def create(respuesta: Respuestas):
     
     #return Pica(respuesta[0], respuestaj[1])
 
-@app.post("/login/")
-async def login(username: int = Form(...), password: int = Form(...)):
-    a = username
-    b = password
-    c = a * b
-    return c
+@app.post("/analisis/")
+async def analisis(nombre: str = Form(...), 
+                edad: int = Form(...), 
+                peso: int = Form(...),
+                sexo: str = Form(...),
+                cuestion1: int = Form(...),
+                cuestion2: int = Form(...),
+                cuestion3: int = Form(...),
+                cuestion4: int = Form(...),
+                cuestion5: int = Form(...),
+                cuestion7: int = Form(...),
+                cuestion8: int = Form(...),
+                cuestion9: int = Form(...),
+                cuestion10: int = Form(...),
+                cuestion11: int = Form(...),
+                cuestion12: int = Form(...),
+                cuestion13: int = Form(...),
+                cuestion14a: int = Form(...),
+                cuestion14b: int = Form(...),
+                cuestion14c: int = Form(...),
+                cuestion14d: int = Form(...),
+                cuestion14e: int = Form(...),
+                cuestion15: int = Form(...)):
+    
+    return cuestion14a
