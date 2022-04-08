@@ -52,5 +52,5 @@ async def analisis(request = Request, nombre: str = Form(...),
                                                         "cuestion 13" : cuestion1,
                                                         "cuestion 14" : cuestion1,
                                                         "cuestion 15" : cuestion1,
-                                                        "cuestion 16" : cuestion1,})
+                                                        "cuestion 16" : cuestion1})
    
