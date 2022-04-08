@@ -55,5 +55,5 @@ async def analisis(request = Request, nombre: str = Form(...),
                 cuestion16: int = Form(...)):
     
     
-    return templates.TemplateResponse("analisis.html", {"request" : request, "cuestion14" : cuestion14})
+    return templates.TemplateResponse("analisis.html", {"request" : request, "cuestion1" : cuestion1})
    
