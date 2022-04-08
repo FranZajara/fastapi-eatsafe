@@ -3,8 +3,11 @@ import json
 from pydantic import BaseModel
 from funciones import *
 from fastapi.encoders import jsonable_encoder
+from fastapi.templating import Jinja2Templates
 
 app = FastAPI()
+
+templates = Jinja2Templates(directory="templates")
 
 @app.get('/inicio')
 async def rutadeprueba():
@@ -50,4 +53,6 @@ async def analisis(nombre: str = Form(...),
                 cuestion15: int = Form(...),
                 cuestion16: int = Form(...)):
     
-    return cuestion14
+    
+    return templates.TemplateResponse("analisis.html", {"cuestion14" : cuestion14})
+   
