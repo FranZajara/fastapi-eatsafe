@@ -33,9 +33,9 @@ async def analisis( request: Request,
                 cuestion15: int = Form(...),
                 cuestion16: int = Form(...)):
     
-    client_host = request.client.host
+    print(request)
     return             templates.TemplateResponse ("analisis.html", {
-                                                        "client_host" : client_host,
+                                                        "request" : request,
                                                         "nombre" : nombre, 
                                                         "edad" : edad,
                                                         "peso" : peso,
