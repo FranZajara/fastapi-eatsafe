@@ -33,7 +33,7 @@ async def analisis(nombre: str = Form(...),
                 cuestion16: int = Form(...)):
     
     
-    return                                            ( {
+    return             templates.TemplateResponse ("analisis.html", {
                                                         "nombre" : nombre, 
                                                         "edad" : edad,
                                                         "peso" : peso,
