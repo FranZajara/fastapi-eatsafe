@@ -11,7 +11,7 @@ app = FastAPI()
 templates = Jinja2Templates(directory="templates")
 
 @app.post("/analisis/", response_class=HTMLResponse)
-async def analisis(request = Request, nombre: str = Form(...), 
+async def analisis(nombre: str = Form(...), 
                 edad: int = Form(...), 
                 peso: int = Form(...),
                 sexo: str = Form(...),
@@ -33,7 +33,7 @@ async def analisis(request = Request, nombre: str = Form(...),
                 cuestion16: int = Form(...)):
     
     
-    return                                            ( {"request" : request, 
+    return                                            ( {
                                                         "nombre" : nombre, 
                                                         "edad" : edad,
                                                         "peso" : peso,
