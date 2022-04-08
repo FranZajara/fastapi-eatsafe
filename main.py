@@ -4,6 +4,7 @@ from pydantic import BaseModel
 from funciones import *
 from fastapi.encoders import jsonable_encoder
 from fastapi.templating import Jinja2Templates
+from fastapi.responses import HTMLResponse
 
 app = FastAPI()
 
@@ -32,8 +33,8 @@ async def create(respuesta: Respuestas):
     
     #return Pica(respuesta[0], respuestaj[1])
 
-@app.post("/analisis/")
-async def analisis(nombre: str = Form(...), 
+@app.post("/analisis/", response_class=HTMLResponse)
+async def analisis(request = Request, nombre: str = Form(...), 
                 edad: int = Form(...), 
                 peso: int = Form(...),
                 sexo: str = Form(...),
@@ -54,5 +55,5 @@ async def analisis(nombre: str = Form(...),
                 cuestion16: int = Form(...)):
     
     
-    return templates.TemplateResponse("analisis.html", {"cuestion14" : cuestion14})
+    return templates.TemplateResponse("analisis.html", {"request" : request, "cuestion14" : cuestion14})
    
