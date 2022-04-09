@@ -9,6 +9,10 @@ def IMB(sexo,altura,peso, edad):
     else:
         return 10*peso + 6.25*altura - 5*edad -161
 
+#función para calcular el índice de masa corporal
+def IMC(peso, altura):
+    return peso/((altura/100) * (altura/100))
+
 #función para identificar si el paciente posee el trastorno alimenticio de Pica
 def Pica(C1, C2):
     if(((C1 == 1) & (C2 == 1)) | ((C1 == 1) & (C2 == 0))):
