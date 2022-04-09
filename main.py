@@ -49,7 +49,7 @@ async def analisis( request: Request,
                                                         "edad" : edad,
                                                         "peso" : peso,
                                                         "sexo" : sexo,
-                                                        "altura" : altura
+                                                        "altura" : altura,
                                                         "cuestion1" : cuestion1,
                                                         "cuestion2" : cuestion2,
                                                         "cuestion3" : cuestion3,
