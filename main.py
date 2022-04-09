@@ -1,6 +1,5 @@
 from fastapi import FastAPI, Request, Form
 import json
-from pydantic import BaseModel
 from funciones import *
 from fastapi.encoders import jsonable_encoder
 from fastapi.templating import Jinja2Templates
@@ -32,6 +31,15 @@ async def analisis( request: Request,
                 cuestion14: list = Form(...),
                 cuestion15: int = Form(...),
                 cuestion16: int = Form(...)):
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     print(request)
     return             templates.TemplateResponse ("analisis.html", {
