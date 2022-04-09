@@ -92,7 +92,7 @@ async def analisis( request: Request,
     else:
         bulimia = "El paciente no presenta el trastorno alimentario de Bulimia nerviosa."
 
-    cuenta = cuestion14.len()
+    cuenta = len(cuestion14)
 
     if(Atracon(cuestion10,cuestion11, cuenta, cuestion13) == True):
         atracon = "El paciente probablemente presenta el trastorno alimentario de Atracones, "
