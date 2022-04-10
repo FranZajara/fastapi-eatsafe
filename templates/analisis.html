@@ -4,8 +4,25 @@
     <title>Análisis Trastornos Alimenticios</title>
     <meta name="title" content="Análisis Trastornos Alimenticios">
     <meta charset="UTF-8">
+
+    <script>
+        var doc = new jsPDF();
+        var specialElementHandlers = {
+            '#editor': function (element, renderer) {
+                 return true;
+    }
+};
+
+$('#cmd').click(function () {
+    doc.fromHTML($('#content').html(), 15, 15, {
+        'width': 170,
+            'elementHandlers': specialElementHandlers
+    });
+    doc.save('sample-file.pdf');
+});
+    </script>
 </head>
-<body>
+<body id="content">
     <header>
         <img src="https://www.adslzone.net/app/uploads-adslzone.net/2019/04/borrar-fondo-imagen.jpg" alt="Logo EatSafe">
     </header>
@@ -29,6 +46,8 @@
     <p>{{nocturno}}</p>
 
 </body>
+
+<button id="cmd">Descargar PDF</button>
 </html>
 
     
