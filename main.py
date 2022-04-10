@@ -117,26 +117,7 @@ async def analisis( request: Request,
         nocturno = "El paciente no presenta el síndrome de ingestión nocturna de alimentos."
    
 
-    resp = templates.TemplateResponse ("analisis.html", {
-                                                        "request" : request,
-                                                        "nombre" : nombre, 
-                                                        "edad" : edad,
-                                                        "peso" : peso,
-                                                        "sexo" : sexo,
-                                                        "altura" : altura,
-                                                        "imc" : imc,
-                                                        "imb" : imb,
-                                                        "pica" : pica,
-                                                        "rumiación" : rumiacion,
-                                                        "evitacion" : evitacion,
-                                                        "anorexia" : anorexia,
-                                                        "bulimia" : bulimia,
-                                                        "atracon" : atracon,
-                                                        "nocturno" : nocturno
-                                                        })
-
-
-    pdfkit.from_string(resp, "AnalisisTrastornosAlimenticios.pdf")
+  
 
     return             templates.TemplateResponse ("analisis.html", {
                                                         "request" : request,
