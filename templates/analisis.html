@@ -4,7 +4,40 @@
     <title>Análisis Trastornos Alimenticios</title>
     <meta name="title" content="Análisis Trastornos Alimenticios">
     <meta charset="UTF-8">
-    <style>
+   
+    <script src="html2pdf.bundle.min.js">
+
+const $boton = document.querySelector("#cmd");
+$boton.addEventListener("click", () => {
+    const $elementoParaConvertir = document.body; // <-- Aquí puedes elegir cualquier elemento del DOM
+    html2pdf()
+        .set({
+            margin: 1,
+            filename: 'documento.pdf',
+            image: {
+                type: 'jpeg',
+                quality: 0.98
+            },
+            html2canvas: {
+                scale: 3, // A mayor escala, mejores gráficos, pero más peso
+                letterRendering: true,
+            },
+            jsPDF: {
+                unit: "in",
+                format: "a3",
+                orientation: 'portrait' // landscape o portrait
+            }
+        })
+    .from($elementoParaConvertir)
+    .save()
+    .catch(err => console.log(err));
+    })
+
+    </script>
+   
+   
+   
+   <style>
         body{
     width: 100%;
     max-width: 600px;
