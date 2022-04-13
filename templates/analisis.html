@@ -4,32 +4,65 @@
     <title>Análisis Trastornos Alimenticios</title>
     <meta name="title" content="Análisis Trastornos Alimenticios">
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="estilo.css">
 </head>
 <body id="content">
     <header>
-        <img src="https://github.com/FranZajara/fastapi-eatsafe/blob/main/templates/EatSafe-Logo.jpg" alt="Logo EatSafe">
+        <img src="EatSafe-Logo.jpg" alt="Logo EatSafe">
     </header>
-
+    <fieldset>
+    <legend>Información Personal</legend>
     <h1>Nombre: {{nombre}}</h1>
     <h1>Edad: {{edad}}</h1>
     <h1>Sexo: {{sexo}}</h1>
     <h1>Peso: {{peso}}</h1>
     <h1>Altura: {{altura}}</h1>
+    </fieldset>
 
-
+    <fieldset>
+    <legend>Calculos de índices</legend>
     <h2>Índice metabólico basal obtenido: {{imb}}</h2>
     <h2>Índice de masa corporal obtenido: {{imc}}</h2>
+    </fieldset>
 
+    <fieldset>
+        <legend>Resultados para el Trastorno de Pica</legend>
     <p>{{pica}}</p>
+    </fieldset>
+
+    <fieldset>
+        <legend>Resultados para el Trastorno de Rumiación</legend>
     <p>{{rumiacion}}</p>
+    </fieldset>
+
+    <fieldset>
+        <legend>Resultados para el Trastorno de Evitación</legend>
     <p>{{evitacion}}</p>
+    </fieldset>
+
+    <fieldset>
+        <legend>Resultados para el Trastorno de la Anorexia Nerviosa</legend>
     <p>{{anorexia}}</p>
+    </fieldset>
+
+    <fieldset>
+        <legend>Resultados para el Trastorno de la Bulimia Nerviosa</legend>
     <p>{{bulimia}}</p>
+    </fieldset>
+
+    <fieldset>
+        <legend>Resultados para el Trastorno de Atracón</legend>
     <p>{{atracon}}</p>
+    </fieldset>
+
+    <fieldset>
+        <legend>Resultados para el Síndrome de ingestión nocturna de alimentos</legend>
     <p>{{nocturno}}</p>
+    </fieldset>
 
 </body>
 
+<button id="vuelta" onclick="location.href='https://trastornosalimenticioseatsafe.es/'">Volver al Inicio</button>
 <button id="cmd">Descargar PDF</button>
 </html>
 
