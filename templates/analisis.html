@@ -5,36 +5,25 @@
     <meta name="title" content="Análisis Trastornos Alimenticios">
     <meta charset="UTF-8">
    
-    <script src="html2pdf.bundle.min.js">
-
-const $boton = document.querySelector("#cmd");
-$boton.addEventListener("click", () => {
-    const $elementoParaConvertir = document.body; // <-- Aquí puedes elegir cualquier elemento del DOM
-    html2pdf()
-        .set({
-            margin: 1,
-            filename: 'documento.pdf',
-            image: {
-                type: 'jpeg',
-                quality: 0.98
-            },
-            html2canvas: {
-                scale: 3, // A mayor escala, mejores gráficos, pero más peso
-                letterRendering: true,
-            },
-            jsPDF: {
-                unit: "in",
-                format: "a3",
-                orientation: 'portrait' // landscape o portrait
-            }
-        })
-    .from($elementoParaConvertir)
-    .save()
-    .catch(err => console.log(err));
-    })
-
-    </script>
-   
+    <script type="text/javascript" src="jspdf.min.js"></script>
+   <script type="text/javascript" >
+       function genPDF() {
+	
+	var doc = new jsPDF();
+	
+    var specialElementHandlers = {
+        '#hidediv' : function(element,render) {return true;}
+    };
+    
+    doc.fromHTML($('#content').get(0), 20,20,{
+                 'width':500,
+        		'elementHandlers': specialElementHandlers
+    });
+	
+	doc.save('Test.pdf');
+	
+}
+   </script>
    
    
    <style>
@@ -120,7 +109,7 @@ legend{
 </body>
 
 
-<button id="cmd">Descargar PDF</button>
+<button id="hidediv">Descargar PDF</button>
 </html>
 
     
