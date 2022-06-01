@@ -4,13 +4,11 @@ import json
 
 from urllib3 import HTTPResponse
 from funciones import *
-from fastapi.encoders import jsonable_encoder
 from fastapi.templating import Jinja2Templates
 from fastapi.responses import HTMLResponse
-import pdfkit
 from xhtml2pdf import pisa
 from io import BytesIO
-from jinja2 import Environment, FileSystemLoader, PackageLoader
+from jinja2 import Environment, FileSystemLoader
 
 
 
