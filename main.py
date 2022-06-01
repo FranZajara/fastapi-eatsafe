@@ -1,8 +1,6 @@
 from cgitb import html
 from fastapi import FastAPI, Request, Form
-import json
 
-from urllib3 import HTTPResponse
 from funciones import *
 from fastapi.templating import Jinja2Templates
 from fastapi.responses import HTMLResponse
@@ -151,6 +149,6 @@ async def analisis( request: Request,
     env = Environment(loader=file_loader)
     template = env.get_template("analisis.html")
     html = template.render(dic)
-    html_fin = pisa.pisaDocument(BytesIO(html.encode("ISO-8859-1")))
-    return html_fin
+    ##html_fin = pisa.pisaDocument(BytesIO(html.encode("ISO-8859-1")))
+    return html
          
