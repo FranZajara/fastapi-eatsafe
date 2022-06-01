@@ -124,8 +124,9 @@ async def analisis( request: Request,
         nocturno = "El paciente no presenta el síndrome de ingestión nocturna de alimentos."
    
     
-    dic = {
-                                                        "request" : request,
+    
+    return             templates.TemplateResponse ("analisis.html", {
+                                                         "request" : request,
                                                         "nombre" : nombre, 
                                                         "edad" : edad,
                                                         "peso" : peso,
@@ -140,35 +141,5 @@ async def analisis( request: Request,
                                                         "bulimia" : bulimia,
                                                         "atracon" : atracon,
                                                         "nocturno" : nocturno
-                                                        }
-
-    def render_to_pdf(template_src, context_dict={}):
-        env = Environment(loader=PackageLoader('FASTAPI-EATSAFE', 'templates'))
-        template = env.get_template(template_src)
-        html = template.render(context_dict)
-        result = BytesIO()
-        pdf = pisa.pisaDocument(BytesIO(html.encode("ISO-8859-1")), result)
-        if not pdf.err:
-            return HTTPResponse(result.getvalue())
-        return None
-  
-    return render_to_pdf("analisis.html", dic)
-    ##ufbdufbi
-   ## return             templates.TemplateResponse ("analisis.html", {
-   ##                                                     "request" : request,
-    ##                                                    "nombre" : nombre, 
-    ##                                                    "edad" : edad,
-    ##                                                    "peso" : peso,
-    ##                                                    "sexo" : sexo,
-    ##                                                    "altura" : altura,
-     ##                                                   "imc" : imc,
-     ##                                                   "imb" : imb,
-    ##                                                    "pica" : pica,
-    ##                                                    "rumiacion" : rumiacion,
-    ##                                                    "evitacion" : evitacion,
-    ##                                                    "anorexia" : anorexia,
-    ##                                                    "bulimia" : bulimia,
-     ##                                                   "atracon" : atracon,
-     ##                                                   "nocturno" : nocturno
-     ##                                                   })
+                                                        })
    
