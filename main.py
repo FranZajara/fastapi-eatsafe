@@ -123,6 +123,9 @@ async def analisis( request: Request,
     else:
         nocturno = "El paciente no presenta el síndrome de ingestión nocturna de alimentos."
    
+
+   
+  
     
     dic = {
                                                         "request" : request,
@@ -143,7 +146,12 @@ async def analisis( request: Request,
                                                         }
 
   
-    return templates.TemplateResponse("analisis.html", dic)
+    html =  templates.TemplateResponse("analisis.html", dic)
     
     
-   
+    def render_to_pdf(template_src, context_dict={}):
+        result = BytesIO()
+        pdf = pisa.pisaDocument(BytesIO(html.encode("ISO-8859-1")), result)
+        if not pdf.err:
+            return HTTPResponse(result.getvalue())
+        return None
