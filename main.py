@@ -149,9 +149,11 @@ async def analisis( request: Request,
     html =  templates.TemplateResponse("analisis.html", dic)
     
     
-    def render_to_pdf(template_src, context_dict={}):
+    def render_to_pdf():
         result = BytesIO()
         pdf = pisa.pisaDocument(BytesIO(html.encode("ISO-8859-1")), result)
         if not pdf.err:
             return HTTPResponse(result.getvalue())
         return None
+
+    return render_to_pdf()
