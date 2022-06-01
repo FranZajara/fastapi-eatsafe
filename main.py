@@ -150,6 +150,6 @@ async def analisis( request: Request,
     template = env.get_template("analisis.html")
     html = template.render(dic)
     result = BytesIO()
-    html_fin = pisa.pisaDocument(BytesIO(html), result, encoding='UTF-8')
+    html_fin = pisa.pisaDocument(BytesIO(html.encode("UTF-8")), result, encoding='UTF-8')
     return html_fin
          
