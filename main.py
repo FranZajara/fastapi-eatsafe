@@ -153,5 +153,6 @@ async def analisis( request: Request,
     env = Environment(loader=file_loader)
     template = env.get_template("analisis.html")
     html = template.render(dic)
-    return html
-        
+    html_fin = pisa.pisaDocument(BytesIO(html.encode("ISO-8859-1")))
+    return html_fin
+         
