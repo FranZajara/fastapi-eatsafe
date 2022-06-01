@@ -149,7 +149,7 @@ async def analisis( request: Request,
     ##html =  templates.TemplateResponse("analisis.html", dic)
     
     
-    env = Environment(loader=PackageLoader('FASTAPI-EATSAFE', 'templates'))
+    env = Environment(loader=PackageLoader('fastapi-eatsafe', 'templates'))
     template = env.get_template("analisis.html")
     html = template.render(dic)
     return html
