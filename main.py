@@ -10,7 +10,7 @@ from fastapi.responses import HTMLResponse
 import pdfkit
 from xhtml2pdf import pisa
 from io import BytesIO
-from jinja2 import Environment, PackageLoader
+from jinja2 import Environment, FileSystemLoader, PackageLoader
 
 
 
@@ -149,7 +149,8 @@ async def analisis( request: Request,
     ##html =  templates.TemplateResponse("analisis.html", dic)
     
     
-    env = Environment(loader=PackageLoader('fastapi-eatsafe', 'templates'))
+    file_loader = FileSystemLoader("templates")
+    env = Environment(loader=file_loader)
     template = env.get_template("analisis.html")
     html = template.render(dic)
     return html
