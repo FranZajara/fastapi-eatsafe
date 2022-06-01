@@ -146,9 +146,11 @@ async def analisis( request: Request,
                                                         }
 
   
-    html =  templates.TemplateResponse("analisis.html", dic)
+    ##html =  templates.TemplateResponse("analisis.html", dic)
     
     
-    
-    return  pisa.pisaDocument(BytesIO(html.encode("ISO-8859-1")))
+    env = Environment(loader=PackageLoader('FASTAPI-EATSAFE', 'templates'))
+    template = env.get_template("analisis.html")
+    html = template.render(dic)
+    return html
         
