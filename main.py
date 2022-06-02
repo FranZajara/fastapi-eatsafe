@@ -1,7 +1,7 @@
 from cgitb import html
 import encodings
 from pydoc import render_doc
-from fastapi import FastAPI, Request, Form
+from fastapi import FastAPI, Request, Form, Response
 
 from funciones import *
 from fastapi.templating import Jinja2Templates
@@ -157,7 +157,7 @@ async def analisis( request: Request,
         ##smart_bytes(result, encoding='utf-8', strings_only=False, errors='strict')
         if not pdf.err:
             ##response = HttpResponse(result.getvalue(), content_type='application/pdf')
-            response = HTMLResponse(result.getvalue())
+            response = Response(content = result.getvalue(), media_type="application/pdf")
             return response
         return None
     
