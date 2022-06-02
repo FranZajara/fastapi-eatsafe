@@ -151,7 +151,7 @@ async def analisis( request: Request,
         template = env.get_template("analisis.html")
         html = template.render(dic)
         result = BytesIO()
-        pdf = pisa.pisaDocument(BytesIO(html.encode("ISO-8859-1")), result)
+        pdf = pisa.pisaDocument(BytesIO(html.encode("UTF-8")), result)
         if pdf:
             response = HTMLResponse(content=result.getvalue(), status_code=200)
             return response
