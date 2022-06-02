@@ -1,4 +1,5 @@
 from cgitb import html
+from pydoc import render_doc
 from fastapi import FastAPI, Request, Form
 
 from funciones import *
@@ -144,15 +145,16 @@ async def analisis( request: Request,
   
     ##html =  templates.TemplateResponse("analisis.html", dic)
     
+    def render_pdf():
+        file_loader = FileSystemLoader("templates")
+        env = Environment(loader=file_loader)
+        template = env.get_template("analisis.html")
+        html = template.render(dic)
+        result = BytesIO()
+        pdf = pisa.pisaDocument(BytesIO(html.encode("ISO-8859-1")), result)
+        if pdf:
+            response = HTMLResponse(result.getvalue(), content_type= "application/pdf")
+            return response
+        return None
     
-    file_loader = FileSystemLoader("templates")
-    env = Environment(loader=file_loader)
-    template = env.get_template("analisis.html")
-    html = template.render(dic)
-    result = BytesIO()
-    html_fin = pisa.pisaDocument(BytesIO(html.encode("UTF-8")), result, encoding='UTF-8')
-    if html_fin:
-        response = HTMLResponse(result.getvalue(), mimetype='application/pdf')
-    else:
-        response = HTMLResponse('Error generating PDF file')
-    return response
+    return render_pdf()
