@@ -11,6 +11,7 @@ from io import BytesIO, StringIO
 from jinja2 import Environment, FileSystemLoader
 from django.http import HttpResponse
 from django.template.loader import get_template
+from django.utils.encoding import smart_bytes
 
 app = FastAPI()
 
@@ -153,8 +154,9 @@ async def analisis( request: Request,
         html = template.render(dic)
         result = BytesIO()
         pdf = pisa.pisaDocument(BytesIO(html.encode("utf-8")), result)
+        smart_bytes(result, encoding='utf-8', strings_only=False, errors='strict')
         if not pdf.err:
-            response = HttpResponse(result.getvalue(), content_type='application/pdf', encodings="utf-8")
+            response = HttpResponse(result.getvalue(), content_type='application/pdf')
             return response
         return None
     
