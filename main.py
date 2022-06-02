@@ -154,9 +154,10 @@ async def analisis( request: Request,
         html = template.render(dic)
         result = BytesIO()
         pdf = pisa.pisaDocument(BytesIO(html.encode("utf-8")), result)
-        smart_bytes(result, encoding='utf-8', strings_only=False, errors='strict')
+        ##smart_bytes(result, encoding='utf-8', strings_only=False, errors='strict')
         if not pdf.err:
-            response = HttpResponse(result.getvalue(), content_type='application/pdf')
+            ##response = HttpResponse(result.getvalue(), content_type='application/pdf')
+            response = HTMLResponse(result.getvalue())
             return response
         return None
     
