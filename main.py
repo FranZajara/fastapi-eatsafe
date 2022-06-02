@@ -6,7 +6,7 @@ from funciones import *
 from fastapi.templating import Jinja2Templates
 from fastapi.responses import HTMLResponse
 from xhtml2pdf import pisa
-from io import BytesIO
+from io import BytesIO, StringIO
 from jinja2 import Environment, FileSystemLoader
 from django.http import HttpResponse
 from django.template.loader import get_template
@@ -150,8 +150,8 @@ async def analisis( request: Request,
         env = Environment(loader=file_loader)
         template = env.get_template("analisis.html")
         html = template.render(dic)
-        result = BytesIO()
-        pdf = pisa.pisaDocument(BytesIO(html.encode("ISO-8859-1")), result)
+        result = StringIO()
+        pdf = pisa.pisaDocument(StringIO(html.encode("utf-8")), result)
         if not pdf.err:
             response = HttpResponse(result.getvalue(), content_type='application/pdf')
             return response
