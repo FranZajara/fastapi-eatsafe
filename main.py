@@ -8,7 +8,7 @@ from fastapi.responses import HTMLResponse
 from xhtml2pdf import pisa
 from io import BytesIO
 from jinja2 import Environment, FileSystemLoader
-
+from django.http import HttpResponse
 
 
 app = FastAPI()
@@ -153,7 +153,7 @@ async def analisis( request: Request,
         result = BytesIO()
         pdf = pisa.pisaDocument(BytesIO(html.encode("UTF-8")), result)
         if pdf:
-            response = HTMLResponse(content=result.getvalue(), status_code=200)
+            response = HttpResponse(result.getvalue(), content_type='application/pdf')
             return response
         return None
     
