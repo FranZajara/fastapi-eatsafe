@@ -146,9 +146,9 @@ async def analisis( request: Request,
     ##html =  templates.TemplateResponse("analisis.html", dic)
     
     def render_pdf():
-        ##file_loader = FileSystemLoader("templates")
-        ##env = Environment(loader=file_loader)
-        template = get_template("analisis.html")
+        file_loader = FileSystemLoader("templates")
+        env = Environment(loader=file_loader)
+        template = env.get_template("analisis.html")
         html = template.render(dic)
         result = BytesIO()
         pdf = pisa.pisaDocument(BytesIO(html.encode("ISO-8859-1")), result)
