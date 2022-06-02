@@ -1,4 +1,5 @@
 from cgitb import html
+import encodings
 from pydoc import render_doc
 from fastapi import FastAPI, Request, Form
 
@@ -151,9 +152,9 @@ async def analisis( request: Request,
         template = env.get_template("analisis.html")
         html = template.render(dic)
         result = BytesIO()
-        pdf = pisa.pisaDocument(BytesIO(html.encode("latin1")), result)
+        pdf = pisa.pisaDocument(BytesIO(html.encode("utf-8")), result)
         if not pdf.err:
-            response = HttpResponse(result.getvalue(), content_type='application/pdf')
+            response = HttpResponse(result.getvalue(), content_type='application/pdf', encodings="utf-8")
             return response
         return None
     
