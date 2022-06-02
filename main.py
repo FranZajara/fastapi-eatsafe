@@ -9,7 +9,7 @@ from xhtml2pdf import pisa
 from io import BytesIO
 from jinja2 import Environment, FileSystemLoader
 from django.http import HttpResponse
-
+from django.template.loader import get_template
 
 app = FastAPI()
 
@@ -146,13 +146,13 @@ async def analisis( request: Request,
     ##html =  templates.TemplateResponse("analisis.html", dic)
     
     def render_pdf():
-        file_loader = FileSystemLoader("templates")
-        env = Environment(loader=file_loader)
-        template = env.get_template("analisis.html")
+        ##file_loader = FileSystemLoader("templates")
+        ##env = Environment(loader=file_loader)
+        template = get_template("analisis.html")
         html = template.render(dic)
         result = BytesIO()
         pdf = pisa.pisaDocument(BytesIO(html.encode("ISO-8859-1")), result)
-        if pdf:
+        if not pdf.err:
             response = HttpResponse(result.getvalue(), content_type='application/pdf')
             return response
         return None
