@@ -153,7 +153,7 @@ async def analisis( request: Request,
         result = BytesIO()
         pdf = pisa.pisaDocument(BytesIO(html.encode("ISO-8859-1")), result)
         if pdf:
-            response = HTMLResponse(result.getvalue(), content_type= "application/pdf")
+            response = HTMLResponse(result.getvalue())
             return response
         return None
     
